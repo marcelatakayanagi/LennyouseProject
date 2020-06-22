@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace DataLayer.Base
+namespace Recodme.RD.Lennyouse.DataLayer.Base
 {
     public abstract class NamedEntity : Entity
     {
