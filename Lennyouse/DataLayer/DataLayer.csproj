@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="MenuInfo\" />
     <Folder Include="RestaurantInfo\" />
     <Folder Include="UserInfo\" />
   </ItemGroup>
