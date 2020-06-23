@@ -5,8 +5,4 @@
     <RootNamespace>Recodme.RD.Lennyouse.DataLayer</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="UserInfo\" />
-  </ItemGroup>
-
 </Project>
