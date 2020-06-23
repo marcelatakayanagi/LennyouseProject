@@ -6,15 +6,15 @@ namespace Recodme.RD.Lennyouse.DataLayer.MenuInfo
 {
     public class Course : NamedEntity
     {
-        public ICollection<Course> ServingCourses { get; set; }
+        public ICollection<Serving> Servings { get; set; }
 
 
-        public Course(string name, string description, string position) : base(name)
+        public Course(string name) : base(name)
         {
 
         }
 
-        public Course(Guid id, DateTime createdAt, DateTime updatedAd, bool isDeleted, string name, string description, string position) : base(id, createdAt, updatedAd, isDeleted, name)
+        public Course(Guid id, DateTime createdAt, DateTime updatedAd, bool isDeleted, string name) : base(id, createdAt, updatedAd, isDeleted, name)
         {
 
         }

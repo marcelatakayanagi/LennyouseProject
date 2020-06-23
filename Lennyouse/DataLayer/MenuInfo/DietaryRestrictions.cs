@@ -6,15 +6,15 @@ namespace Recodme.RD.Lennyouse.DataLayer.MenuInfo
 {
     public class DietaryRestrictions : NamedEntity
     {
-        public ICollection<Dish> DishesDietarityResctrictions { get; set; }
+        public ICollection<Dish> Dishes { get; set; }
 
 
-        public DietaryRestrictions(string name, string description, string position) : base(name)
+        public DietaryRestrictions(string name) : base(name)
         {
 
         }
 
-        public DietaryRestrictions(Guid id, DateTime createdAt, DateTime updatedAd, bool isDeleted, string name, string description, string position) : base(id, createdAt, updatedAd, isDeleted, name)
+        public DietaryRestrictions(Guid id, DateTime createdAt, DateTime updatedAd, bool isDeleted, string name) : base(id, createdAt, updatedAd, isDeleted, name)
         {
 
         }
