@@ -17,7 +17,7 @@ namespace Recodme.RD.Lennyouse.DataLayer.MenuInfo
             get => _startingHours;
             set
             {
-                value = _startingHours;
+                _startingHours = value;
                 RegisterChange();
             }
         }
@@ -29,14 +29,14 @@ namespace Recodme.RD.Lennyouse.DataLayer.MenuInfo
             get => _endingHours;
             set
             {
-                value = _endingHours;
+                _endingHours = value;
                 RegisterChange();
             }
         }
 
         public virtual ICollection<Menu> Menus { get; set; }
 
-        public Meal(string name, string startingHours, string endingHours) :base(name)
+        public Meal(string name, string startingHours, string endingHours) : base(name)
         {
             _startingHours = startingHours;
             _endingHours = endingHours;

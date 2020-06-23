@@ -5,4 +5,12 @@
     <RootNamespace>Recodme.RD.Lennyouse.DataLayer</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="UserInfo\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+  </ItemGroup>
+
 </Project>
