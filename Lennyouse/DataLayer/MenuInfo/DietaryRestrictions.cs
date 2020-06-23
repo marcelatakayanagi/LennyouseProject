@@ -6,7 +6,7 @@ namespace Recodme.RD.Lennyouse.DataLayer.MenuInfo
 {
     public class DietaryRestrictions : NamedEntity
     {
-        public ICollection<Dish> Dishes { get; set; }
+        public virtual ICollection<Dish> Dishes { get; set; }
 
 
         public DietaryRestrictions(string name) : base(name)

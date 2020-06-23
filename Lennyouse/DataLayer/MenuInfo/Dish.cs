@@ -12,7 +12,7 @@ namespace Recodme.RD.Lennyouse.DataLayer.MenuInfo
 
         public virtual DietaryRestrictions DietaryRestrictions { get; set; }
 
-        public ICollection<Serving> Servings { get; set; }
+        public virtual ICollection<Serving> Servings { get; set; }
 
         public Dish(Guid dietaryRestrictionsId, string name) : base(name)
         {
