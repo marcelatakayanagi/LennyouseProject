@@ -2,12 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Recodme.RD.Lennyouse.DataLayer.UserInfo
 {
     public class Person : Entity
     {
+        [ForeignKey("LennyouseUser")]
         private long _vatNumber;
         private string _firstName;
         private string _lastName;
