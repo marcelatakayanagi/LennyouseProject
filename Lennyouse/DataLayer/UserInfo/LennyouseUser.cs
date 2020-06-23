@@ -10,7 +10,7 @@ namespace Recodme.RD.Lennyouse.DataLayer.UserInfo
     {
         [ForeignKey("Person")]
         public Guid PersonId { get; set; }
-
+       
         public override Guid Id { get; set; }
 
         public virtual Person Person { get; set; }
