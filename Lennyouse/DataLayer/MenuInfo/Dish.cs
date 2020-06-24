@@ -7,21 +7,21 @@ namespace Recodme.RD.Lennyouse.DataLayer.MenuInfo
 {
     public class Dish : NamedEntity
     {
-        [ForeignKey("DietaryRestrictions")]
-        public Guid DietaryRestrictionsId { get; set; }
+        [ForeignKey("DietaryRestriction")]
+        public Guid DietaryRestrictionId { get; set; }
 
-        public virtual DietaryRestrictions DietaryRestrictions { get; set; }
+        public virtual DietaryRestriction DietaryRestrictions { get; set; }
 
         public virtual ICollection<Serving> Servings { get; set; }
 
-        public Dish(Guid dietaryRestrictionsId, string name) : base(name)
+        public Dish(Guid dietaryRestrictionId, string name) : base(name)
         {
-            DietaryRestrictionsId = dietaryRestrictionsId;
+            DietaryRestrictionId = dietaryRestrictionId;
         }
 
-        public Dish(Guid id, DateTime createdAt, DateTime updatedAd, bool isDeleted, Guid dietaryRestrictionsId, string name) : base(id, createdAt, updatedAd, isDeleted, name)
+        public Dish(Guid id, DateTime createdAt, DateTime updatedAd, bool isDeleted, Guid dietaryRestrictionId, string name) : base(id, createdAt, updatedAd, isDeleted, name)
         {
-            DietaryRestrictionsId = dietaryRestrictionsId;
+            DietaryRestrictionId = dietaryRestrictionId;
         }
     }
 }
