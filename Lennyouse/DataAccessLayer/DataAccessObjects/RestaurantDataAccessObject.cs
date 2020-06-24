@@ -31,7 +31,7 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects
         }
         #endregion
 
-        #region Region
+        #region Read
         public Restaurant Read(Guid id)
         {
             return _context.Restaurants.FirstOrDefault(x => x.Id == id);

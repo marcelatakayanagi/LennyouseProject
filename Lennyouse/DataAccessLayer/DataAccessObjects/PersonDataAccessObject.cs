@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Recodme.RD.Lennyouse.DataAccessLayer.Contexts;
-using Recodme.RD.Lennyouse.DataLayer.RestaurantInfo;
+using Recodme.RD.Lennyouse.DataLayer.UserInfo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,61 +9,63 @@ using System.Threading.Tasks;
 
 namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects
 {
-    public class BookingDataAccessObject
+    public class PersonDataAccessObject
     {
         private RestaurantContext _context;
-        public BookingDataAccessObject()
+        public PersonDataAccessObject(Person person)
         {
             _context = new RestaurantContext();
         }
 
         #region Create
-        public void Create(Booking booking)
+        public void Create(Person person)
         {
-            _context.Bookings.Add(booking);
+            _context.Persons.Add(person);
             _context.SaveChanges();
         }
 
-        public async Task CreateAsync(Booking booking)
+        public async Task CreateAsync(Person person)
         {
-            await _context.Bookings.AddAsync(booking);
+            await _context.Persons.AddAsync(person);
             await _context.SaveChangesAsync();
         }
         #endregion
 
         #region Read
-        public Booking Read(Guid id)
+        public Person Read(Guid id)
         {
-            return _context.Bookings.FirstOrDefault(x => x.Id == id);
+            return _context.Persons.FirstOrDefault(x => x.Id == id);
         }
-        public async Task<Booking> ReadAsync(Guid id)
+
+        public async Task<Person> ReadAsync(Guid id)
         {
             return await
-                new Task<Booking>
+                new Task<Person>
                 (
-                    () => _context.Bookings.FirstOrDefault(x => x.Id == id)
+                    () => _context.Persons.FirstOrDefault(x => x.Id == id)
                 );
         }
         #endregion
 
-        #region Update
-        public void Update(Booking booking)
+        # region Update
+        public void Update(Person person)
         {
-            _context.Entry(booking).State = EntityState.Modified;
+            _context.Entry(person).State = EntityState.Modified;
             _context.SaveChanges();
         }
-        public async Task UpdateAsync(Booking booking)
+
+        public async Task UpdateAsync(Person person)
         {
-            _context.Entry(booking).State = EntityState.Modified;
+            _context.Entry(person).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
         #endregion
 
         #region Delete
-        public void Delete(Booking booking)
+        public void Delete(Person person)
         {
-            booking.IsDeleted = true;
-            Update(booking);
+            person.IsDeleted = true;
+            Update(person);
         }
 
         public void Delete(Guid id)
@@ -73,18 +75,19 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects
             Delete(item);
         }
 
-        public async Task DeleteAsync(Booking booking)
+        public async Task DeleteAsync(Person person)
         {
-            booking.IsDeleted = true;
-            await UpdateAsync(booking);
+            person.IsDeleted = true;
+            await UpdateAsync(person);
         }
-        public async Task DeleteAsync(Guid id)
+
+        public async Task TaskAsync(Guid id)
         {
             var item = ReadAsync(id).Result;
-
             if (item == null) return;
             await DeleteAsync(item);
         }
         #endregion
+
     }
 }

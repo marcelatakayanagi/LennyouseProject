@@ -29,7 +29,7 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects
         }
         #endregion
 
-        #region Region
+        #region Read
         public Menu Read(Guid id)
         {
             return _context.Menus.FirstOrDefault(x => x.Id == id);

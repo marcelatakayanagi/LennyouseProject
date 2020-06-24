@@ -30,7 +30,7 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects
         }
         #endregion
 
-        #region Region
+        #region Read
         public Course Read(Guid id)
         {
             return _context.Courses.FirstOrDefault(x => x.Id == id);

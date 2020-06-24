@@ -1,69 +1,75 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Recodme.RD.Lennyouse.DataAccessLayer.Contexts;
-using Recodme.RD.Lennyouse.DataLayer.RestaurantInfo;
+using Recodme.RD.Lennyouse.DataLayer.UserInfo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects
 {
-    public class StaffTitleDataAccessObject
+    public class ClientRecordDataAccessObject
     {
         private RestaurantContext _context;
-        public StaffTitleDataAccessObject()
+
+        public ClientRecordDataAccessObject(ClientRecord clientRecord)
         {
             _context = new RestaurantContext();
         }
 
         #region Create
-        public void Create(StaffTitle staffTitle)
+        public void Create(ClientRecord clientRecord)
         {
-            _context.StaffTitles.Add(staffTitle);
+            _context.ClientRecords.Add(clientRecord);
             _context.SaveChanges();
         }
 
-        public async Task CreateAsync(StaffTitle staffTitle)
+        public async Task CreateAsync(ClientRecord clientRecord)
         {
-            await _context.StaffTitles.AddAsync(staffTitle);
+            await _context.ClientRecords.AddAsync(clientRecord);
             await _context.SaveChangesAsync();
+
         }
         #endregion
 
         #region Read
-        public StaffTitle Read(Guid id)
+        public ClientRecord Read(Guid id)
         {
-            return _context.StaffTitles.FirstOrDefault(x => x.Id == id);
+            return _context.ClientRecords.FirstOrDefault(x => x.Id == id);
         }
-        public async Task<StaffTitle> ReadAsync(Guid id)
+
+        public async Task<ClientRecord> ReadAsync (Guid id)
         {
             return await
-                new Task<StaffTitle>
+                new Task<ClientRecord>
                 (
-                    () => _context.StaffTitles.FirstOrDefault(x => x.Id == id)
+                    () => _context.ClientRecords.FirstOrDefault(x => x.Id == id)
                 );
         }
         #endregion
 
         #region Update
-        public void Update(StaffTitle staffTitle)
+        public void Update(ClientRecord clientRecord)
         {
-            _context.Entry(staffTitle).State = EntityState.Modified;
+            _context.Entry(clientRecord).State = EntityState.Modified;
             _context.SaveChanges();
         }
-        public async Task UpdateAsync(StaffTitle staffTitle)
+
+        public async Task UpdateAsync(ClientRecord clientRecord)
         {
-            _context.Entry(staffTitle).State = EntityState.Modified;
+            _context.Entry(clientRecord).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
         #endregion
 
         #region Delete
-        public void Delete(StaffTitle staffTitle)
+        public void Delete(ClientRecord clientRecord)
         {
-            staffTitle.IsDeleted = true;
-            Update(staffTitle);
+            clientRecord.IsDeleted = true;
+            Update(clientRecord);
+
         }
 
         public void Delete(Guid id)
@@ -72,16 +78,15 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects
             if (item == null) return;
             Delete(item);
         }
-
-        public async Task DeleteAsync(StaffTitle staffTitle)
+        public async Task DeleteAsync (ClientRecord clientRecord)
         {
-            staffTitle.IsDeleted = true;
-            await UpdateAsync(staffTitle);
+            clientRecord.IsDeleted = true;
+            await UpdateAsync(clientRecord);
         }
+
         public async Task DeleteAsync(Guid id)
         {
             var item = ReadAsync(id).Result;
-
             if (item == null) return;
             await DeleteAsync(item);
         }
