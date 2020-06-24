@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using Recodme.RD.Lennyouse.DataLayer.Base;
 using Recodme.RD.Lennyouse.DataLayer.MenuInfo;
+using Recodme.RD.Lennyouse.DataLayer.UserInfo;
 
 namespace Recodme.RD.Lennyouse.DataLayer.RestaurantInfo
 {

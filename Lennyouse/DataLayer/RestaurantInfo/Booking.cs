@@ -1,4 +1,5 @@
 ﻿using Recodme.RD.Lennyouse.DataLayer.Base;
+using Recodme.RD.Lennyouse.DataLayer.UserInfo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

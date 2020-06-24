@@ -1,11 +1,11 @@
-﻿using DataAccessLayer.Properties;
+﻿using Recodme.RD.Lennyouse.DataAccessLayer.Properties;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Recodme.RD.Lennyouse.DataLayer.MenuInfo;
 using Recodme.RD.Lennyouse.DataLayer.RestaurantInfo;
 using Recodme.RD.Lennyouse.DataLayer.UserInfo;
 
-namespace DataAccessLayer.Contexts
+namespace Recodme.RD.Lennyouse.DataAccessLayer.Contexts
 {
     public class RestaurantContext : IdentityDbContext
     {

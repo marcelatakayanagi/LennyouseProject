@@ -1,14 +1,12 @@
-﻿using DataAccessLayer.Contexts;
+﻿using Recodme.RD.Lennyouse.DataAccessLayer.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Recodme.RD.Lennyouse.DataLayer.Base;
 using Recodme.RD.Lennyouse.DataLayer.MenuInfo;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.DataAccessObjects
+namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects
 {
     public class CourseDataAccessObject
     {
@@ -18,7 +16,7 @@ namespace DataAccessLayer.DataAccessObjects
             _context = new RestaurantContext();
         }
 
-        #region C
+        #region Create
         public void Create(Course course)
         {
             _context.Courses.Add(course);
@@ -32,7 +30,7 @@ namespace DataAccessLayer.DataAccessObjects
         }
         #endregion
 
-        #region R
+        #region Region
         public Course Read(Guid id)
         {
             return _context.Courses.FirstOrDefault(x => x.Id == id);
@@ -40,13 +38,14 @@ namespace DataAccessLayer.DataAccessObjects
         public async Task<Course> ReadAsync(Guid id)
         {
             return await 
-                new Task<Course>(
-                    ()=>
-                    _context.Courses.FirstOrDefault(x => x.Id == id));
+                new Task<Course>
+                (
+                    ()=>_context.Courses.FirstOrDefault(x => x.Id == id)
+                );
         }
         #endregion
 
-        #region U
+        #region Update
         public void Update(Course course)
         {
             _context.Entry(course).State = EntityState.Modified;
@@ -59,7 +58,7 @@ namespace DataAccessLayer.DataAccessObjects
         }
         #endregion
 
-        #region D
+        #region Delete
         public void Delete(Course course)
         {
             course.IsDeleted = true;
@@ -83,7 +82,7 @@ namespace DataAccessLayer.DataAccessObjects
             var item = ReadAsync(id).Result;
 
             if (item == null) return;
-            await UpdateAsync(item);
+            await DeleteAsync(item);
         }
         #endregion
     }
