@@ -33,18 +33,18 @@ namespace DataAccessLayer.Contexts
             base.OnModelCreating(builder);
         }
 
-        public DbSet<Course> Course { get; set; }
-        public DbSet<DietaryRestriction> DietaryRestriction { get; set; }
-        public DbSet<Dish> Dish { get; set; }
-        public DbSet<Meal> Meal { get; set; }
-        public DbSet<Menu> Menu { get; set; }
-        public DbSet<Serving> MenuDishCourse { get; set; }
-        public DbSet<ClientRecord> ClientRecord { get; set; }
-        public DbSet<Person> Person { get; set; }
-        public DbSet<StaffRecord> StaffRecord { get; set; }
-        public DbSet<StaffTitle> StaffTitle { get; set; }
-        public DbSet<Title> Title { get; set; }
-        public DbSet<Restaurant> Restaurant { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<DietaryRestriction> DietaryRestrictions { get; set; }
+        public DbSet<Dish> Dishes { get; set; }
+        public DbSet<Meal> Meals { get; set; }
+        public DbSet<Menu> Menus { get; set; }
+        public DbSet<Serving> MenuDishCourses { get; set; }
+        public DbSet<ClientRecord> ClientRecords { get; set; }
+        public DbSet<Person> Persons { get; set; }
+        public DbSet<StaffRecord> StaffRecords { get; set; }
+        public DbSet<StaffTitle> StaffTitles { get; set; }
+        public DbSet<Title> Titles { get; set; }
+        public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Booking> Booking { get; set; }
         public DbSet<Serving> Serving { get; set; }
 
