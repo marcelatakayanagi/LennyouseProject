@@ -38,15 +38,14 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.Contexts
         public DbSet<Dish> Dishes { get; set; }
         public DbSet<Meal> Meals { get; set; }
         public DbSet<Menu> Menus { get; set; }
-        public DbSet<Serving> MenuDishCourses { get; set; }
         public DbSet<ClientRecord> ClientRecords { get; set; }
         public DbSet<Person> Persons { get; set; }
         public DbSet<StaffRecord> StaffRecords { get; set; }
         public DbSet<StaffTitle> StaffTitles { get; set; }
         public DbSet<Title> Titles { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
-        public DbSet<Booking> Booking { get; set; }
-        public DbSet<Serving> Serving { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Serving> Servings { get; set; }
 
     }
 }
