@@ -34,7 +34,7 @@ namespace DataAccessLayer.Contexts
         }
 
         public DbSet<Course> Course { get; set; }
-        public DbSet<DietaryRestrictions> DietaryRestriction { get; set; }
+        public DbSet<DietaryRestriction> DietaryRestriction { get; set; }
         public DbSet<Dish> Dish { get; set; }
         public DbSet<Meal> Meal { get; set; }
         public DbSet<Menu> Menu { get; set; }
