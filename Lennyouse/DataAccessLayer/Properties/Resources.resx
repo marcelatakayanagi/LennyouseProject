@@ -130,6 +130,6 @@
     <value>Server=RECODME-SCUNHA\SQLEXPRESS;Database=Lennyouse;Trusted_Connection=true;</value>
   </data>
   <data name="ConnetionString" xml:space="preserve">
-    <value>Server=localhost\SQLEXPRESS;Database=Lennyouse;Trusted_Connection=true;</value>
+    <value>Server=RECODME-SCUNHA\SQLEXPRESS;Database=Lennyouse;Trusted_Connection=true;</value>
   </data>
 </root>
