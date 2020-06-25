@@ -8,7 +8,7 @@ using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects
+namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects.UserInfoDAO
 {
     public class ClientRecordDataAccessObject
     {

@@ -1,67 +1,67 @@
 ﻿using Recodme.RD.Lennyouse.DataAccessLayer.Contexts;
 using Microsoft.EntityFrameworkCore;
-using Recodme.RD.Lennyouse.DataLayer.MenuInfo;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Recodme.RD.Lennyouse.DataLayer.MenuInfo;
 
-namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects
+namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects.MenuInfoDAO
 {
-    public class ServingDataAccessObject
+    public class MenuDataAccessObject
     {
         private RestaurantContext _context;
-        public ServingDataAccessObject()
+        public MenuDataAccessObject()
         {
             _context = new RestaurantContext();
         }
 
         #region Create
-        public void Create(Serving serving)
+        public void Create(Menu menu)
         {
-            _context.Servings.Add(serving);
+            _context.Menus.Add(menu);
             _context.SaveChanges();
         }
 
-        public async Task CreateAsync(Serving serving)
+        public async Task CreateAsync(Menu menu)
         {
-            await _context.Servings.AddAsync(serving);
+            await _context.Menus.AddAsync(menu);
             await _context.SaveChangesAsync();
         }
         #endregion
 
         #region Read
-        public Serving Read(Guid id)
+        public Menu Read(Guid id)
         {
-            return _context.Servings.FirstOrDefault(x => x.Id == id);
+            return _context.Menus.FirstOrDefault(x => x.Id == id);
         }
-        public async Task<Serving> ReadAsync(Guid id)
+        public async Task<Menu> ReadAsync(Guid id)
         {
             return await
-                new Task<Serving>
+                new Task<Menu>
                 (
-                    () => _context.Servings.FirstOrDefault(x => x.Id == id)
+                    () => _context.Menus.FirstOrDefault(x => x.Id == id)
                 );
         }
         #endregion
 
         #region Update
-        public void Update(Serving serving)
+        public void Update(Menu menu)
         {
-            _context.Entry(serving).State = EntityState.Modified;
+            _context.Entry(menu).State = EntityState.Modified;
             _context.SaveChanges();
         }
-        public async Task UpdateAsync(Serving serving)
+        public async Task UpdateAsync(Menu menu)
         {
-            _context.Entry(serving).State = EntityState.Modified;
+            _context.Entry(menu).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
         #endregion
 
         #region Delete
-        public void Delete(Serving serving)
+        public void Delete(Menu menu)
         {
-            serving.IsDeleted = true;
-            Update(serving);
+            menu.IsDeleted = true;
+            Update(menu);
         }
 
         public void Delete(Guid id)
@@ -71,10 +71,10 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects
             Delete(item);
         }
 
-        public async Task DeleteAsync(Serving serving)
+        public async Task DeleteAsync(Menu menu)
         {
-            serving.IsDeleted = true;
-            await UpdateAsync(serving);
+            menu.IsDeleted = true;
+            await UpdateAsync(menu);
         }
         public async Task DeleteAsync(Guid id)
         {

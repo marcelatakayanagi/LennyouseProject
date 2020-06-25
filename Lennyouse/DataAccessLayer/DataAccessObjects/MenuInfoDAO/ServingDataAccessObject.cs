@@ -1,68 +1,67 @@
 ﻿using Recodme.RD.Lennyouse.DataAccessLayer.Contexts;
 using Microsoft.EntityFrameworkCore;
-using Recodme.RD.Lennyouse.DataLayer.Base;
 using Recodme.RD.Lennyouse.DataLayer.MenuInfo;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects
+namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects.MenuInfoDAO
 {
-    public class CourseDataAccessObject
+    public class ServingDataAccessObject
     {
         private RestaurantContext _context;
-        public CourseDataAccessObject()
+        public ServingDataAccessObject()
         {
             _context = new RestaurantContext();
         }
 
         #region Create
-        public void Create(Course course)
+        public void Create(Serving serving)
         {
-            _context.Courses.Add(course);
+            _context.Servings.Add(serving);
             _context.SaveChanges();
         }
 
-        public async Task CreateAsync(Course course)
+        public async Task CreateAsync(Serving serving)
         {
-            await _context.Courses.AddAsync(course);
+            await _context.Servings.AddAsync(serving);
             await _context.SaveChangesAsync();
         }
         #endregion
 
         #region Read
-        public Course Read(Guid id)
+        public Serving Read(Guid id)
         {
-            return _context.Courses.FirstOrDefault(x => x.Id == id);
+            return _context.Servings.FirstOrDefault(x => x.Id == id);
         }
-        public async Task<Course> ReadAsync(Guid id)
+        public async Task<Serving> ReadAsync(Guid id)
         {
-            return await 
-                new Task<Course>
+            return await
+                new Task<Serving>
                 (
-                    ()=>_context.Courses.FirstOrDefault(x => x.Id == id)
+                    () => _context.Servings.FirstOrDefault(x => x.Id == id)
                 );
         }
         #endregion
 
         #region Update
-        public void Update(Course course)
+        public void Update(Serving serving)
         {
-            _context.Entry(course).State = EntityState.Modified;
+            _context.Entry(serving).State = EntityState.Modified;
             _context.SaveChanges();
         }
-        public async Task UpdateAsync(Course course)
+        public async Task UpdateAsync(Serving serving)
         {
-            _context.Entry(course).State = EntityState.Modified;
+            _context.Entry(serving).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
         #endregion
 
         #region Delete
-        public void Delete(Course course)
+        public void Delete(Serving serving)
         {
-            course.IsDeleted = true;
-            Update(course);
+            serving.IsDeleted = true;
+            Update(serving);
         }
 
         public void Delete(Guid id)
@@ -72,10 +71,10 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects
             Delete(item);
         }
 
-        public async Task DeleteAsync(Course course)
+        public async Task DeleteAsync(Serving serving)
         {
-            course.IsDeleted = true;
-            await UpdateAsync(course); 
+            serving.IsDeleted = true;
+            await UpdateAsync(serving);
         }
         public async Task DeleteAsync(Guid id)
         {

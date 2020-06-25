@@ -1,7 +1,7 @@
 ﻿using Recodme.RD.Lennyouse.DataAccessLayer.Contexts;
 using System;
 
-namespace ConsoleApp1
+namespace Recodme.RD.Lennyouse.PresentationLayer.App
 {
     class Program
     {

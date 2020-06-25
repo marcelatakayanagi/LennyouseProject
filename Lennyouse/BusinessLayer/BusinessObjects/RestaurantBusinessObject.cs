@@ -1,5 +1,5 @@
 ﻿using Recodme.RD.Lennyouse.BusinessLayer.OperationResults;
-using Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects;
+using Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects.RestaurantInfoDAO;
 using Recodme.RD.Lennyouse.DataLayer.RestaurantInfo;
 using System;
 using System.Collections.Generic;
@@ -66,13 +66,16 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects
                 return new OperationResult<Restaurant> { Success = false, Exception = e };
             }
         }
+
+
         #endregion
-
-
 
         #region Update
+
         #endregion
+
         #region Delete
+
         #endregion
     }
 }

@@ -97,7 +97,7 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Server=RECODME-SCUNHA\SQLEXPRESS;Database=Lennyouse;Trusted_Connection=true;.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string ConnetionString {
             get {

@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\Data
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{C24FC2F1-B83C-4190-92EF-5767761C2ACD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{F8D38C70-110C-48DC-A895-D5520E827D2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App", "ConsoleApp1\App.csproj", "{F8D38C70-110C-48DC-A895-D5520E827D2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{DE8C36D2-75DF-49D4-979B-99EE36C2EF83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{DE8C36D2-75DF-49D4-979B-99EE36C2EF83}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PresentationLayer", "PresentationLayer", "{0213AA8D-B476-42C2-9A33-DA684F16A513}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +38,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F8D38C70-110C-48DC-A895-D5520E827D2C} = {0213AA8D-B476-42C2-9A33-DA684F16A513}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7ECA99F1-B575-454F-B44C-6037F595AB4C}
