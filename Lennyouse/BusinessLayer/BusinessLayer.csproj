@@ -2,10 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Recodme.RD.Lennyouse.BusinessLayer</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="BusinessObjects\MenuInfoBO\" />
+    <Folder Include="BusinessObjects\UserInfoBO\" />
   </ItemGroup>
 
 </Project>
