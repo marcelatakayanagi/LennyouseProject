@@ -5,6 +5,7 @@ using Recodme.RD.Lennyouse.DataLayer.MenuInfo;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects.MenuInfoDAO
 {
@@ -83,6 +84,18 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects.MenuInfoDAO
 
             if (item == null) return;
             await DeleteAsync(item);
+        }
+        #endregion
+
+        #region List
+        public List<Course> List()
+        {
+            return _context.Courses.ToList();
+        }
+
+        public async Task<List<Course>> ListAsync()
+        {
+            return await _context.Courses.ToListAsync();
         }
         #endregion
     }
