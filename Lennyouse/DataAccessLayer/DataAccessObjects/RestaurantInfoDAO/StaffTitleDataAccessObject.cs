@@ -17,6 +17,17 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects.RestaurantInfoD
             _context = new RestaurantContext();
         }
 
+        #region List
+        public List<StaffTitle> List()
+        {
+            return _context.Set<StaffTitle>().ToList();
+        }
+        public async Task<List<StaffTitle>> ListAsync()
+        {
+            return await _context.Set<StaffTitle>().ToListAsync();
+        }
+        #endregion
+
         #region Create
         public void Create(StaffTitle staffTitle)
         {

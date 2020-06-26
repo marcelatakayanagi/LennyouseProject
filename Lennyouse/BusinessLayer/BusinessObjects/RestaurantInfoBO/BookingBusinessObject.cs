@@ -9,16 +9,15 @@ using System.Transactions;
 
 namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.RestaurantInfoBO
 {
-    public class RestaurantBusinessObject
+    public class BookingBusinessObject
     {
-        private RestaurantDataAccessObject _dao;
-        public RestaurantBusinessObject()
+        private BookingDataAccessObject _dao;
+        public BookingBusinessObject()
         {
-            _dao = new RestaurantDataAccessObject();
+            _dao = new BookingDataAccessObject();
         }
-
         #region List
-        public OperationResult<List<Restaurant>> List()
+        public OperationResult<List<Booking>> List()
         {
             try
             {
@@ -31,15 +30,15 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.RestaurantInfoBO
                                                             TransactionScopeAsyncFlowOption.Enabled);
                 var res = _dao.List();
                 transactionScope.Complete();
-                return new OperationResult<List<Restaurant>>() { Success = true, Result = res };
+                return new OperationResult<List<Booking>>() { Success = true, Result = res };
             }
             catch (Exception e)
             {
-                return new OperationResult<List<Restaurant>>() { Success = false, Exception = e };
+                return new OperationResult<List<Booking>>() { Success = false, Exception = e };
             }
         }
 
-        public async Task<OperationResult<List<Restaurant>>> ListAsync()
+        public async Task<OperationResult<List<Booking>>> ListAsync()
         {
             try
             {
@@ -52,17 +51,17 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.RestaurantInfoBO
                                                             TransactionScopeAsyncFlowOption.Enabled);
                 var res = await _dao.ListAsync();
                 transactionScope.Complete();
-                return new OperationResult<List<Restaurant>>() { Success = true, Result = res };
+                return new OperationResult<List<Booking>>() { Success = true, Result = res };
             }
             catch (Exception e)
             {
-                return new OperationResult<List<Restaurant>>() { Success = false, Exception = e };
+                return new OperationResult<List<Booking>>() { Success = false, Exception = e };
             }
         }
         #endregion
 
         #region Create
-        public OperationResult Create(Restaurant item)
+        public OperationResult Create(Booking item)
         {
             try
             {
@@ -77,14 +76,14 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.RestaurantInfoBO
                 transactionScope.Complete();
                 return new OperationResult() { Success = true };
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return new OperationResult() { Success = false, Exception = e };
             }
-            
+
         }
 
-        public async Task<OperationResult> CreateAsync(Restaurant item)
+        public async Task<OperationResult> CreateAsync(Booking item)
         {
             try
             {
@@ -93,7 +92,7 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.RestaurantInfoBO
                     IsolationLevel = IsolationLevel.ReadCommitted,
                     Timeout = TimeSpan.FromSeconds(30)
                 };
-                var scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions, 
+                var scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions,
                                                  TransactionScopeAsyncFlowOption.Enabled);
                 await _dao.CreateAsync(item);
                 scope.Complete();
@@ -107,28 +106,7 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.RestaurantInfoBO
         #endregion
 
         #region Read
-        public OperationResult<Restaurant> Read(Guid id)
-        {
-            try
-            {
-                var transactionOptions = new TransactionOptions()
-                {
-                    IsolationLevel = IsolationLevel.ReadCommitted,
-                    Timeout = TimeSpan.FromSeconds(30)
-                };
-                var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions, 
-                                                            TransactionScopeAsyncFlowOption.Enabled);
-                var res= _dao.Read(id);
-                transactionScope.Complete();
-                return new OperationResult<Restaurant>() { Success = true, Result = res };
-            }
-            catch (Exception e)
-            {
-                return new OperationResult<Restaurant>() { Success = false, Exception = e };
-            }
-        }
-
-        public async Task<OperationResult<Restaurant>> ReadAsync(Guid id)
+        public OperationResult<Booking> Read(Guid id)
         {
             try
             {
@@ -139,19 +117,40 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.RestaurantInfoBO
                 };
                 var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions,
                                                             TransactionScopeAsyncFlowOption.Enabled);
-                var res = await _dao.ReadAsync(id);
+                var result = _dao.Read(id);
                 transactionScope.Complete();
-                return new OperationResult<Restaurant>() { Success = true, Result = res };
+                return new OperationResult<Booking>() { Success = true, Result = result };
             }
             catch (Exception e)
             {
-                return new OperationResult<Restaurant>() { Success = false, Exception = e };
+                return new OperationResult<Booking>() { Success = false, Exception = e };
+            }
+        }
+
+        public async Task<OperationResult<Booking>> ReadAsync(Guid id)
+        {
+            try
+            {
+                var transactionOptions = new TransactionOptions()
+                {
+                    IsolationLevel = IsolationLevel.ReadCommitted,
+                    Timeout = TimeSpan.FromSeconds(30)
+                };
+                var transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOptions,
+                                                            TransactionScopeAsyncFlowOption.Enabled);
+                var result = await _dao.ReadAsync(id);
+                transactionScope.Complete();
+                return new OperationResult<Booking>() { Success = true, Result = result };
+            }
+            catch (Exception e)
+            {
+                return new OperationResult<Booking>() { Success = false, Exception = e };
             }
         }
         #endregion
 
         #region Update
-        public OperationResult Update(Restaurant item)
+        public OperationResult Update(Booking item)
         {
             try
             {
@@ -173,7 +172,7 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.RestaurantInfoBO
 
         }
 
-        public async Task<OperationResult> UpdateAsync(Restaurant item)
+        public async Task<OperationResult> UpdateAsync(Booking item)
         {
             try
             {
@@ -196,7 +195,7 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.RestaurantInfoBO
         #endregion
 
         #region Delete
-        public OperationResult Delete(Restaurant item)
+        public OperationResult Delete(Booking item)
         {
             try
             {
@@ -218,7 +217,7 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.RestaurantInfoBO
 
         }
 
-        public async Task<OperationResult> DeleteAsync(Restaurant item)
+        public async Task<OperationResult> DeleteAsync(Booking item)
         {
             try
             {
