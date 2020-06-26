@@ -10,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BusinessObjects\MenuInfoBO\" />
     <Folder Include="BusinessObjects\UserInfoBO\" />
   </ItemGroup>
 
