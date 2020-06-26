@@ -15,6 +15,17 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects.UserInfoDAO
             _context = new RestaurantContext();
         }
 
+        #region List
+        public List<LennyouseUser> List()
+        {
+            return _context.Set<LennyouseUser>().ToList();
+        }
+        public async Task<List<Lennyouseuser>> ListAsync()
+        {
+            return await _context.Set<LennyouseUser>().ToListAsync();
+        }
+        #endregion
+
         #region Create
         public void Create(LennyouseUser lennyouseUser)
         {

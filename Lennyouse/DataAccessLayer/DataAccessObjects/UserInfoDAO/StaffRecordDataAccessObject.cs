@@ -2,6 +2,7 @@
 using Recodme.RD.Lennyouse.DataAccessLayer.Contexts;
 using Recodme.RD.Lennyouse.DataLayer.UserInfo;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,6 +15,17 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects.UserInfoDAO
         {
             _context = new RestaurantContext();
         }
+
+        #region List
+        public List<StaffRecord> List()
+        {
+            return _context.Set<StaffRecord>().ToList();
+        }
+        public async Task<List<StaffRecord>> ListAsync()
+        {
+            return await _context.Set<StaffRecord>().ToListAsync();
+        }
+        #endregion
 
         #region Create
         public void Create(StaffRecord staffRecord)
