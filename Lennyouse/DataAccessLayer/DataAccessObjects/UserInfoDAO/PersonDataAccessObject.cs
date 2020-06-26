@@ -4,7 +4,6 @@ using Recodme.RD.Lennyouse.DataLayer.UserInfo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects.UserInfoDAO
@@ -18,13 +17,13 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects.UserInfoDAO
         }
 
         #region List
-        public List<ClientRecord> List()
+        public List<Person> List()
         {
-            return _context.Set<ClientRecord>().ToList();
+            return _context.Set<Person>().ToList();
         }
-        public async Task<List<ClientRecord>> ListAsync()
+        public async Task<List<Person>> ListAsync()
         {
-            return await _context.Set<ClientRecord>().ToListAsync();
+            return await _context.Set<Person>().ToListAsync();
         }
         #endregion
 
