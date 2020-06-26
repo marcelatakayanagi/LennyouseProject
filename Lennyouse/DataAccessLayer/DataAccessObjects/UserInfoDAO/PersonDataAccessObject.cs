@@ -11,7 +11,7 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects.UserInfoDAO
     public class PersonDataAccessObject
     {
         private RestaurantContext _context;
-        public PersonDataAccessObject(Person person)
+        public PersonDataAccessObject()
         {
             _context = new RestaurantContext();
         }
@@ -91,7 +91,7 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects.UserInfoDAO
             await UpdateAsync(person);
         }
 
-        public async Task TaskAsync(Guid id)
+        public async Task DeleteAsync(Guid id)
         {
             var item = ReadAsync(id).Result;
             if (item == null) return;

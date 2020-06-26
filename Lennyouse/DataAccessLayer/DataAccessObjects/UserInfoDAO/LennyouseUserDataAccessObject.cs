@@ -20,7 +20,7 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects.UserInfoDAO
         {
             return _context.Set<LennyouseUser>().ToList();
         }
-        public async Task<List<Lennyouseuser>> ListAsync()
+        public async Task<List<LennyouseUser>> ListAsync()
         {
             return await _context.Set<LennyouseUser>().ToListAsync();
         }

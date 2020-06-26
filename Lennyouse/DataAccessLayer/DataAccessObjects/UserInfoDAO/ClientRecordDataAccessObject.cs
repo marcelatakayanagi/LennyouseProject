@@ -14,7 +14,7 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects.UserInfoDAO
     {
         private RestaurantContext _context;
 
-        public ClientRecordDataAccessObject(ClientRecord clientRecord)
+        public ClientRecordDataAccessObject()
         {
             _context = new RestaurantContext();
         }
