@@ -27,9 +27,9 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.MenuInfoBO
         {
             try
             {
-                var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled);
+                //var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled);
                 _dao.Create(item);
-                scope.Complete();
+                //scope.Complete();
                 return new OperationResult() { Success = true };
             }
             catch (Exception e)
@@ -42,9 +42,9 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.MenuInfoBO
         {
             try
             {
-                var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled);
+                //var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled);
                 await _dao.CreateAsync(item);
-                scope.Complete();
+                //scope.Complete();
                 return new OperationResult() { Success = true };
             }
             catch (Exception e)
@@ -91,9 +91,9 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.MenuInfoBO
         {
             try
             {
-                var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled);
+                //var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled);
                 _dao.Update(item);
-                scope.Complete();
+                //scope.Complete();
                 return new OperationResult() { Success = true };
             }
             catch (Exception e)
@@ -107,9 +107,9 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.MenuInfoBO
         {
             try
             {
-                var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled);
+                //var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled);
                 await _dao.UpdateAsync(item);
-                scope.Complete();
+                //scope.Complete();
                 return new OperationResult() { Success = true };
             }
             catch (Exception e)
@@ -124,9 +124,9 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.MenuInfoBO
         {
             try
             {
-                var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled);
+                //var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled);
                 _dao.Delete(item);
-                scope.Complete();
+                //scope.Complete();
                 return new OperationResult() { Success = true };
             }
             catch (Exception e)
@@ -140,9 +140,9 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.MenuInfoBO
         {
             try
             {
-                var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled);
+                //var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled);
                 await _dao.DeleteAsync(item);
-                scope.Complete();
+                //scope.Complete();
                 return new OperationResult() { Success = true };
             }
             catch (Exception e)
@@ -156,9 +156,9 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.MenuInfoBO
         {
             try
             {
-                var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled);
+                //var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled);
                 _dao.Delete(id);
-                scope.Complete();
+                //scope.Complete();
                 return new OperationResult() { Success = true };
             }
             catch (Exception e)
@@ -172,9 +172,9 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.MenuInfoBO
         {
             try
             {
-                var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled);
+                //var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled);
                 await _dao.DeleteAsync(id);
-                scope.Complete();
+                //scope.Complete();
                 return new OperationResult() { Success = true };
             }
             catch (Exception e)
