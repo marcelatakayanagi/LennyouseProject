@@ -29,13 +29,14 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.Base
             IsolationLevel = IsolationLevel.ReadCommitted,
             Timeout = TimeSpan.FromSeconds(30)
         };
-        
-        protected OperationResult ExecuteOperation(Action operation)
+
+        #region Transaction
+        protected OperationResult ExecuteTransaction(Action operation)
         {
+            var scope = new TransactionScope(TransactionScopeOption.Required, opts,
+                                 TransactionScopeAsyncFlowOption.Enabled);
             try
             {
-                var scope = new TransactionScope(TransactionScopeOption.Required, opts,
-                                                 TransactionScopeAsyncFlowOption.Enabled);
                 operation.Invoke();
                 scope.Complete();
                 return new OperationResult() { Success = true };
@@ -47,12 +48,31 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.Base
 
         }
 
-        protected async Task<OperationResult> ExecuteOperationAsync(Func<Task> operation)
+        protected OperationResult<TR> ExecuteTransaction<TR>(Func<TR> operation)
         {
+            var scope = new TransactionScope(TransactionScopeOption.Required, opts,
+                                 TransactionScopeAsyncFlowOption.Enabled);
             try
             {
-                var scope = new TransactionScope(TransactionScopeOption.Required, opts,
-                                                 TransactionScopeAsyncFlowOption.Enabled);
+                var res = operation.Invoke();
+                scope.Complete();
+                return new OperationResult<TR>() { Success = true , Result = res};
+            }
+            catch (Exception e)
+            {
+                return new OperationResult<TR>() { Success = false, Exception = e };
+            }
+
+        }
+        #endregion
+
+        #region Transaction Async
+        protected async Task<OperationResult> ExecuteTransactionAsync(Func<Task> operation)
+        {
+            var scope = new TransactionScope(TransactionScopeOption.Required, opts,
+                                 TransactionScopeAsyncFlowOption.Enabled);
+            try
+            {
                 await operation.Invoke();
                 scope.Complete();
                 return new OperationResult() { Success = true };
@@ -63,29 +83,12 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.Base
             }
         }
 
-        protected OperationResult<TR> ExecuteOperation<TR>(Func<TR> operation)
+        protected async Task<OperationResult<TR>> ExecuteTransactionAsync<TR>(Func<Task<TR>> operation)
         {
+            var scope = new TransactionScope(TransactionScopeOption.Required, opts,
+                                 TransactionScopeAsyncFlowOption.Enabled);
             try
             {
-                var transactionScope = new TransactionScope(TransactionScopeOption.Required, opts,
-                                                            TransactionScopeAsyncFlowOption.Enabled);
-                var res = operation.Invoke();
-                transactionScope.Complete();
-                return new OperationResult<TR>() { Success = true, Result = res };
-            }
-            catch (Exception e)
-            {
-                return new OperationResult<TR>() { Success = false, Exception = e };
-            }
-
-        }
-
-        public async Task<OperationResult<TR>> ExecuteOperationAsync<TR>(Func<Task<TR>> operation)
-        {
-            try
-            {
-                var scope = new TransactionScope(TransactionScopeOption.Required, opts,
-                                                 TransactionScopeAsyncFlowOption.Enabled);
                 var res = await operation.Invoke();
                 scope.Complete();
                 return new OperationResult<TR>() { Success = true , Result = res};
@@ -95,5 +98,65 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.Base
                 return new OperationResult<TR>() { Success = false, Exception = e };
             }
         }
+        #endregion
+
+        #region Operation
+        protected OperationResult ExecuteOperation(Action operation)
+        {
+            try
+            {
+                operation.Invoke();
+                return new OperationResult() { Success = true };
+            }
+            catch (Exception e)
+            {
+                return new OperationResult() { Success = false, Exception = e };
+            }
+
+        }
+
+        protected OperationResult<TR> ExecuteOperation<TR>(Func<TR> operation)
+        {
+            try
+            {
+                var res = operation.Invoke();
+                return new OperationResult<TR>() { Success = true, Result = res };
+            }
+            catch (Exception e)
+            {
+                return new OperationResult<TR>() { Success = false, Exception = e };
+            }
+
+        }
+        #endregion
+
+        #region Operation Async
+        protected async Task<OperationResult> ExecuteOperationAsync(Func<Task> operation)
+        {
+            try
+            {
+                await operation.Invoke();
+                return new OperationResult() { Success = true };
+            }
+            catch (Exception e)
+            {
+                return new OperationResult() { Success = false, Exception = e };
+            }
+        }
+
+        public async Task<OperationResult<TR>> ExecuteOperationAsync<TR>(Func<Task<TR>> operation)
+        {
+            try
+            {
+                var res = await operation.Invoke();
+                return new OperationResult<TR>() { Success = true, Result = res };
+            }
+            catch (Exception e)
+            {
+                return new OperationResult<TR>() { Success = false, Exception = e };
+            }
+        }
+        #endregion
+
     }
 }

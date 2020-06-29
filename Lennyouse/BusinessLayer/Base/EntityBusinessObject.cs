@@ -20,14 +20,15 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.Base
         #region List
         public OperationResult<List<T>> List()
         {
-            return ExecuteOperation(() => _dao.List());
+            return ExecuteTransaction(() => _dao.List());
         }
 
         public async Task<OperationResult<List<T>>> ListAsync()
         {
-            return await ExecuteOperationAsync(() => _dao.ListAsync());
+            return await ExecuteTransactionAsync(() => _dao.ListAsync());
         }
         #endregion
+
 
         #region Create
         public OperationResult Create(T item)
@@ -42,16 +43,15 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.Base
         #endregion
 
 
-
         #region Read
         public OperationResult<T> Read(Guid id)
         {
-            return ExecuteOperation(() => _dao.Read(id));
+            return ExecuteTransaction(() => _dao.Read(id));
         }
 
         public async Task<OperationResult<T>> ReadAsync(Guid id)
         {
-            return await ExecuteOperationAsync(() => _dao.ReadAsync(id));
+            return await ExecuteTransactionAsync(() => _dao.ReadAsync(id));
         }
         #endregion
 

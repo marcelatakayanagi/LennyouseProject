@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects
 {
-    public class DietaryRestrictionBusinessObject : EntityBusinessObject<DietaryRestriction>
+    public class DietaryRestrictionExampleBusinessObject : EntityBusinessObject<DietaryRestriction>
     {
         //public List<DietaryRestrictionsWIthDishes> ListWithDishCount()
         //{
