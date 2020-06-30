@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.MenuInfoBO;
 using Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models;
-using WebApi.Models;
 
 namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers
 {

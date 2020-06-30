@@ -5,12 +5,13 @@ using System.Net;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.MenuInfoBO;
 using Recodme.RD.Lennyouse.DataLayer.MenuInfo;
-using WebApi.Models;
+using Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models;
 
-namespace WebApi.Controllers
+namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -19,7 +20,7 @@ namespace WebApi.Controllers
         private MealBusinessObject _bo = new MealBusinessObject();
 
         [HttpPost]
-        public ActionResult Create([FromBody]MealViewModel vm)
+        public ActionResult Create([FromBody] MealViewModel vm)
         {
             var m = new Meal(vm.Name, vm.Starting, vm.Ending);
             var res = _bo.Create(m);
@@ -40,6 +41,44 @@ namespace WebApi.Controllers
                 mvm.Ending = res.Result.EndingHours;
                 return mvm;
             }
+            else return new ObjectResult(HttpStatusCode.InternalServerError);
+        }
+
+        [HttpGet]
+        public ActionResult<List<MealViewModel>> List()
+        {
+            var res = _bo.List();
+            if (res.Success)
+            {
+                var list = new List<MealViewModel>();
+                foreach (var item in res.Result)
+                    list.Add(MealViewModel.Parse(item));
+                return list;
+            }
+            else return new ObjectResult(HttpStatusCode.InternalServerError);
+        }
+
+        [HttpPut]
+        public ActionResult Update([FromBody] MealViewModel vm)
+        {
+            var res = _bo.Read(vm.Id);
+            if (!res.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            var current = res.Result;
+            if (current == null) return NotFound();
+            if (current.Name == vm.Name && current.StartingHours == vm.Starting && current.EndingHours == vm.Ending) return new ObjectResult(HttpStatusCode.NotModified);
+            if (current.Name != vm.Name) current.Name = vm.Name;
+            if (current.StartingHours != vm.Starting) current.StartingHours = vm.Starting;
+            if (current.EndingHours != vm.Ending) current.EndingHours = vm.Ending;
+            var updateResult = _bo.Update(current);
+            if (!updateResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(Guid id)
+        {
+            var res = _bo.Delete(id);
+            if (res.Success) return Ok();
             else return new ObjectResult(HttpStatusCode.InternalServerError);
         }
     }

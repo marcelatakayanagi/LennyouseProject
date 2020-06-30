@@ -59,10 +59,12 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.MenuInfoBO
         {
             try
             {
-                var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled);
-                var res = _dao.Read(id);
-                scope.Complete();
-                return new OperationResult<Meal>() { Success = true, Result = res };
+                using (var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    var res = _dao.Read(id);
+                    scope.Complete();
+                    return new OperationResult<Meal>() { Success = true, Result = res };
+                }
             }
             catch (Exception e)
             {
@@ -74,10 +76,12 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.MenuInfoBO
         {
             try
             {
-                var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled);
-                var res = await _dao.ReadAsync(id);
-                scope.Complete();
-                return new OperationResult<Meal>() { Success = true, Result = res };
+                using (var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    var res = await _dao.ReadAsync(id);
+                    scope.Complete();
+                    return new OperationResult<Meal>() { Success = true, Result = res };
+                }
             }
             catch (Exception e)
             {
@@ -189,10 +193,12 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.MenuInfoBO
         {
             try
             {
-                var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled);
-                var res = _dao.List();
-                scope.Complete();
-                return new OperationResult<List<Meal>>() { Success = true, Result = res };
+                using (var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    var res = _dao.List();
+                    scope.Complete();
+                    return new OperationResult<List<Meal>>() { Success = true, Result = res };
+                }
             }
             catch (Exception e)
             {
@@ -204,10 +210,12 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.MenuInfoBO
         {
             try
             {
-                var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled);
-                var res = await _dao.ListAsync();
-                scope.Complete();
-                return new OperationResult<List<Meal>>() { Success = true, Result = res };
+                using (var scope = new TransactionScope(TransactionScopeOption.Required, opts, TransactionScopeAsyncFlowOption.Enabled))
+                {
+                    var res = await _dao.ListAsync();
+                    scope.Complete();
+                    return new OperationResult<List<Meal>>() { Success = true, Result = res };
+                }
             }
             catch (Exception e)
             {
