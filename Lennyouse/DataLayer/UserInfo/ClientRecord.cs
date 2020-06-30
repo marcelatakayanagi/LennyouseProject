@@ -15,6 +15,10 @@ namespace Recodme.RD.Lennyouse.DataLayer.UserInfo
         public Guid PersonId { get; set; }
         public virtual Person Person { get; set; }
 
+        [ForeignKey("Restaurant")]
+        public Guid RestaurantId { get; set; }
+        public virtual Restaurant Restaurant { get; set; }
+
         private DateTime _registerDate;
 
         [Required(ErrorMessage = "Input Register Date")]

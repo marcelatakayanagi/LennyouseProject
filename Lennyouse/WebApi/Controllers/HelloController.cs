@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApi.Controllers
+namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

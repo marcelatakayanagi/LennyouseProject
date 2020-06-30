@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>WebApi</RootNamespace>
+    <RootNamespace>Recodme.RD.Lennyouse.PresentationLayer.WebApi</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +11,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
+    <ProjectReference Include="..\ConsoleApp1\App.csproj" />
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj" />
   </ItemGroup>
 
 </Project>

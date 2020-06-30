@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace WebApi
+namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi
 {
     public class Program
     {

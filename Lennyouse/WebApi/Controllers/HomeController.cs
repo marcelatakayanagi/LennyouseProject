@@ -5,9 +5,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.MenuInfoBO;
+using Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models;
 using WebApi.Models;
 
-namespace WebApi.Controllers
+namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers
 {
     public class HomeController : Controller
     {
@@ -20,6 +22,8 @@ namespace WebApi.Controllers
 
         public IActionResult Index()
         {
+            var bo = new DietaryRestrictionBusinessObject();
+            var lst = new List<DietaryRestrictionViewModel>();
             return View();
         }
 

@@ -1,6 +1,6 @@
 using System;
 
-namespace WebApi.Models
+namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models
 {
     public class ErrorViewModel
     {

@@ -12,7 +12,10 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.MenuInfoBO
     {
         private DietaryRestrictionDataAccessObject _dao;
 
-
+        public OperationResult<List<DietaryRestriction>> List()
+        {
+            return ExecuteTransaction(() => _dao.List());
+        }
         public OperationResult Create(DietaryRestriction dietaryRestriction)
         {
             return ExecuteOperation(() => _dao.Create(dietaryRestriction));
