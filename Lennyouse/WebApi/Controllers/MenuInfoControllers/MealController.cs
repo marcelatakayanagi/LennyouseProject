@@ -11,7 +11,7 @@ using Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.MenuInfoBO;
 using Recodme.RD.Lennyouse.DataLayer.MenuInfo;
 using Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models;
 
-namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers
+namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.MenuInfoControllers
 {
     [Route("api/[controller]")]
     [ApiController]

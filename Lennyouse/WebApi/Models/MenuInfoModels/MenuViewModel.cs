@@ -1,7 +1,7 @@
 using Recodme.RD.Lennyouse.DataLayer.MenuInfo;
 using System;
 
-namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models
+namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models.MenuInfoModels
 {
     public class MenuViewModel
     {

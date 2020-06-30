@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.MenuInfoBO;
 using Recodme.RD.Lennyouse.DataLayer.MenuInfo;
-using Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models;
+using Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models.MenuInfoModels;
 
-namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers
+namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.MenuInfoControllers
 {
     [Route("api/[controller]")]
     [ApiController]

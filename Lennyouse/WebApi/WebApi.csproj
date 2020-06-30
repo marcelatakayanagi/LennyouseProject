@@ -16,4 +16,11 @@
     <ProjectReference Include="..\DataLayer\DataLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\UserInfoControllers\" />
+    <Folder Include="Controllers\RestaurantInfoControllers\" />
+    <Folder Include="Models\UserInfoModels\" />
+    <Folder Include="Models\RestaurantInfoModels\" />
+  </ItemGroup>
+
 </Project>

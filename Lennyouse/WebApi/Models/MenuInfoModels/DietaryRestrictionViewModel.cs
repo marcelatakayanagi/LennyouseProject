@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models
+namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models.MenuInfoModels
 {
     public class DietaryRestrictionViewModel
     {
