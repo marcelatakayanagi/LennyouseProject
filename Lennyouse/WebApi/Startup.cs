@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using Recodme.RD.Lennyouse.PresentationLayer.WebApi.Options;
 
 namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi
 {
@@ -24,6 +26,9 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddSwaggerGen(
+                (x) => { x.SwaggerDoc("v1", new OpenApiInfo() { Title = "Lennyouse", Version = "v1" }); //função anonima usar parenteses qdo tiver dois argumentos de entrada
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +44,13 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            var swaggerOptions = new SwaggerOptions();
+            Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggerOptions);
+
+            app.UseSwagger(options => options.RouteTemplate = swaggerOptions.JsonRoute);
+            app.UseSwaggerUI(options => options.SwaggerEndpoint(swaggerOptions.UiEndpoint, swaggerOptions.ApiDescription));
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
