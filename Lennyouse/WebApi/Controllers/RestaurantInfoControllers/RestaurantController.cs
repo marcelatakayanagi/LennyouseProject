@@ -18,7 +18,7 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.RestaurantIn
         {
             var r = vm.ToRestaurant();
             var res = _bo.Create(r);
-            return new ObjectResult(res.Success ? HttpStatusCode.OK : HttpStatusCode.InternalServerError);
+            return StatusCode(res.Success ? (int)HttpStatusCode.OK : (int)HttpStatusCode.InternalServerError);
         }
 
         [HttpGet("{id}")]

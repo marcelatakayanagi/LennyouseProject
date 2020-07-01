@@ -1,70 +1,72 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.RestaurantInfoBO;
-using Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models.RestaurantInfoModels;
+using Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.UserInfoBO;
+using Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models.UserInfoModels;
 
-namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.RestaurantInfoControllers
+namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.UserInfoControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BookingController: ControllerBase
+    public class StaffRecordController : ControllerBase
     {
-        private BookingBusinessObject _bo = new BookingBusinessObject();
+        private StaffRecordBusinessObject _bo = new StaffRecordBusinessObject();
 
         [HttpPost]
-        public ActionResult Create([FromBody] BookingViewModel vm)
+        public ActionResult Create([FromBody] StaffRecordViewModel vm)
         {
-            var b = vm.ToBooking();
-            var res = _bo.Create(b);
+            var p = vm.ToStaffRecord();
+            var res = _bo.Create(p);
             return StatusCode(res.Success ? (int)HttpStatusCode.OK : (int)HttpStatusCode.InternalServerError);
         }
 
         [HttpGet("{id}")]
-        public ActionResult<BookingViewModel> Get(Guid id)
+        public ActionResult<StaffRecordViewModel> Get(Guid id)
         {
             var res = _bo.Read(id);
             if (res.Success)
             {
                 if (res.Result == null) return NotFound();
-                var bvm = BookingViewModel.Parse(res.Result);
-                return bvm;
+                var srvm = StaffRecordViewModel.Parse(res.Result);
+                return srvm;
             }
             else return StatusCode((int)HttpStatusCode.InternalServerError);
         }
-
         [HttpGet]
-        public ActionResult<List<BookingViewModel>> List()
+        public ActionResult<List<StaffRecordViewModel>> List()
         {
             var res = _bo.List();
             if (!res.Success) return StatusCode((int)HttpStatusCode.InternalServerError);
-            var list = new List<BookingViewModel>();
+            var list = new List<StaffRecordViewModel>();
             foreach (var item in res.Result)
             {
-                list.Add(BookingViewModel.Parse(item));
+                list.Add(StaffRecordViewModel.Parse(item));
             }
             return list;
         }
 
-
         [HttpPut]
-        public ActionResult Update([FromBody] BookingViewModel b)
+        public ActionResult Update([FromBody] StaffRecordViewModel sr)
         {
-            var currentResult = _bo.Read(b.Id);
+            var currentResult = _bo.Read(sr.Id);
             if (!currentResult.Success) return StatusCode((int)HttpStatusCode.InternalServerError);
 
             var current = currentResult.Result;
             if (current == null) return NotFound();
 
-            if (current.Date == b.Date && current.ClientRecordId == b.ClientRecordId) return StatusCode((int)HttpStatusCode.NotModified);
-            if (current.Date != b.Date) current.Date = b.Date;
-            if (current.ClientRecordId != b.ClientRecordId) current.ClientRecordId = b.ClientRecordId;
+            if (current.BeginDate == sr.BeginDate && current.EndDate == sr.EndDate) return StatusCode((int)HttpStatusCode.InternalServerError);
+
+            if (current.BeginDate != sr.BeginDate) current.BeginDate = sr.BeginDate;
+            if (current.EndDate != sr.EndDate) current.EndDate = sr.EndDate;
+
             var updateResult = _bo.Update(current);
             if (!updateResult.Success) return StatusCode((int)HttpStatusCode.InternalServerError);
             return Ok();
         }
-
 
         [HttpDelete("{id}")]
         public ActionResult Delete(Guid id)
@@ -73,6 +75,5 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.RestaurantIn
             if (result.Success) return Ok();
             return StatusCode((int)HttpStatusCode.InternalServerError);
         }
-
     }
 }
