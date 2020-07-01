@@ -23,7 +23,7 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.Contexts
         {
             if(!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(Resources.ConnetionString);
+                optionsBuilder.UseSqlServer(Resources.ConnectionString);
             }
         }
 

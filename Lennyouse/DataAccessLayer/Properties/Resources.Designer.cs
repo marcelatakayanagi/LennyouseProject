@@ -61,6 +61,15 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Server=localhost\SQLEXPRESS;Database=Lennyouse;Trusted_Connection=true;.
+        /// </summary>
+        public static string ConnectionString {
+            get {
+                return ResourceManager.GetString("ConnectionString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Server=RECODME-CGARCIA\SQLEXPRESS;Database=Lennyouse;Trusted_Connection=true;.
         /// </summary>
         public static string ConnectionStringCarlos {
@@ -93,15 +102,6 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.Properties {
         public static string ConnectionStringSofia {
             get {
                 return ResourceManager.GetString("ConnectionStringSofia", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Server=localhost\SQLEXPRESS;Database=Lennyouse;Trusted_Connection=true;.
-        /// </summary>
-        public static string ConnetionString {
-            get {
-                return ResourceManager.GetString("ConnetionString", resourceCulture);
             }
         }
     }
