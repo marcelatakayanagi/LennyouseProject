@@ -13,7 +13,7 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models.UserInfoModels
 
         public StaffRecord ToStaffRecord()
         {
-            return new StaffRecord(Id, DateTime.UtcNow, DateTime.UtcNow, false, DateTime.UtcNow, DateTime.UtcNow, PersonId, RestaurantId);
+            return new StaffRecord(Id, DateTime.UtcNow, DateTime.UtcNow, false, BeginDate, EndDate, RestaurantId, PersonId);
         }
 
         public static StaffRecordViewModel Parse(StaffRecord staffRecord)
@@ -22,7 +22,9 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models.UserInfoModels
             {
                 Id = staffRecord.Id,
                 BeginDate = staffRecord.BeginDate,
-                EndDate = staffRecord.EndDate
+                EndDate = staffRecord.EndDate,
+                RestaurantId=staffRecord.RestaurantId,
+                PersonId = staffRecord.PersonId
             };
         }
     }

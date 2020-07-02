@@ -12,11 +12,11 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models.RestaurantInfoMod
         public Guid Id { get; set; }
         public DateTime Date { get; set; }
         public Guid ClientRecordId { get; set; }
-        
+
 
         public Booking ToBooking()
         {
-            return new Booking(Id, DateTime.UtcNow,DateTime.UtcNow,false,DateTime.UtcNow,ClientRecordId);
+            return new Booking(Id, DateTime.UtcNow, DateTime.UtcNow, false, Date, ClientRecordId);
         }
         public static BookingViewModel Parse(Booking booking)
         {

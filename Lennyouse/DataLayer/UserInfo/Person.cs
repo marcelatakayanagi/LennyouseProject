@@ -12,7 +12,7 @@ namespace Recodme.RD.Lennyouse.DataLayer.UserInfo
         private long _vatNumber;
         private string _firstName;
         private string _lastName;
-        private DateTime _bithDate;
+        private DateTime _birthDate;
         private long _phoneNumber;
 
         [Required(ErrorMessage = "Input V.A.T number")]
@@ -52,10 +52,10 @@ namespace Recodme.RD.Lennyouse.DataLayer.UserInfo
         [Display(Name = "Birth Date")]
         public DateTime BirthDate
         {
-            get => _bithDate;
+            get => _birthDate;
             set
             {
-                _bithDate = value;
+                _birthDate = value;
                 RegisterChange();
             }
         }
@@ -80,7 +80,7 @@ namespace Recodme.RD.Lennyouse.DataLayer.UserInfo
 
         public Person(DateTime birthDate, string firstName, string lastName, long phoneNumber, long vatNumber, Guid lennyouseUserId) : base()
         {
-            _bithDate = birthDate;
+            _birthDate = birthDate;
             _firstName = firstName;
             _lastName = lastName;
             _phoneNumber = phoneNumber;
@@ -91,7 +91,7 @@ namespace Recodme.RD.Lennyouse.DataLayer.UserInfo
         public Person(Guid id, DateTime createAt, DateTime updateAt, bool isDeleted, DateTime birthDate, string firstName, string lastName, 
                       long phoneNumber, long vatNumber, Guid lennyouseUserId) : base(id, createAt, updateAt, isDeleted)
         {
-            _bithDate = birthDate;
+            _birthDate = birthDate;
             _firstName = firstName;
             _lastName = lastName;
             _phoneNumber = phoneNumber;

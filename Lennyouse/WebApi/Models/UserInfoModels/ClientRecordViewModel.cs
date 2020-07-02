@@ -23,7 +23,9 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models.UserInfoModels
             return new ClientRecordViewModel()
             {
                 Id = clientRecord.Id,
-                RegisterDate = clientRecord.RegisterDate
+                RegisterDate = clientRecord.RegisterDate,
+                PersonId = clientRecord.PersonId,
+                RestaurantId = clientRecord.RestaurantId
             };
         }
     }
