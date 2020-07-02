@@ -53,8 +53,6 @@ namespace Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.MenuInfoBO
         }
         #endregion
 
-
-
         #region Read
         public OperationResult<DietaryRestriction> Read(Guid id)
         {

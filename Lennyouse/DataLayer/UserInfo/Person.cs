@@ -71,26 +71,33 @@ namespace Recodme.RD.Lennyouse.DataLayer.UserInfo
                 RegisterChange();
             }
         }
+
+        [ForeignKey("LennyouseUser")]
+        public Guid LennyouseUserId { get; set; }
         public virtual LennyouseUser LennyouseUser { get; set; }
+
         public virtual ICollection<StaffRecord> StaffRecords { get; set; }
         public virtual ICollection<ClientRecord> ClientRecords { get; set; }
 
-        public Person(DateTime birthDate, string firstName, string lastName, long phoneNumber, long vatNumber) : base()
+        public Person(DateTime birthDate, string firstName, string lastName, long phoneNumber, long vatNumber, Guid lennyouseUserId) : base()
         {
             _bithDate = birthDate;
             _firstName = firstName;
             _lastName = lastName;
             _phoneNumber = phoneNumber;
             _vatNumber = vatNumber;
+            LennyouseUserId = lennyouseUserId;
         }
 
-        public Person(Guid id, DateTime createAt, DateTime updateAt, bool isDeleted, DateTime birthDate, string firstName, string lastName, long phoneNumber, long vatNumber) : base(id, createAt, updateAt, isDeleted)
+        public Person(Guid id, DateTime createAt, DateTime updateAt, bool isDeleted, DateTime birthDate, string firstName, string lastName, 
+                      long phoneNumber, long vatNumber, Guid lennyouseUserId) : base(id, createAt, updateAt, isDeleted)
         {
             _bithDate = birthDate;
             _firstName = firstName;
             _lastName = lastName;
             _phoneNumber = phoneNumber;
             _vatNumber = vatNumber;
+            LennyouseUserId = lennyouseUserId;
         }
     }
 }

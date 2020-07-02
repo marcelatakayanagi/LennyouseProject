@@ -35,16 +35,18 @@ namespace Recodme.RD.Lennyouse.DataLayer.UserInfo
 
         public virtual ICollection<Booking> Bookings { get; set; }
 
-        public ClientRecord(DateTime registerDate, Guid personId) : base()
+        public ClientRecord(DateTime registerDate, Guid personId, Guid restaurantId) : base()
         {
             _registerDate = registerDate;
             PersonId = personId;
+            RestaurantId = restaurantId;
         }
 
-        public ClientRecord(Guid id, DateTime createdAt, DateTime updatedAd, bool isDeleted, DateTime registerDate, Guid personId) : base(id, createdAt, updatedAd, isDeleted)
+        public ClientRecord(Guid id, DateTime createdAt, DateTime updatedAd, bool isDeleted, DateTime registerDate, Guid personId, Guid restaurantId) : base(id, createdAt, updatedAd, isDeleted)
         {
             _registerDate = registerDate;
             PersonId = personId;
+            RestaurantId = restaurantId;
         }
     }
 }
