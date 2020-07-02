@@ -9,40 +9,40 @@ namespace Recodme.RD.Lennyouse.DataLayer.RestaurantInfo
 {
     public class Title : NamedEntity
     {
-        private string _openingHours;
-        private string _closingHours;
-        [Required(ErrorMessage = "Input  Opening Hours")]
-        public string OpeningHours
+        private string _position;
+        private string _description;
+        [Required(ErrorMessage = "Input Position")]
+        public string Position
         {
-            get => _openingHours;
+            get => _position;
             set
             {
-                _openingHours = value;
+                _position = value;
                 RegisterChange();
             }
         }
 
-        [Required(ErrorMessage = "Input Closing Hours")]
-        public string ClosingHours
+        [Required(ErrorMessage = "Input Description")]
+        public string Description
         {
-            get => _closingHours;
+            get => _description;
             set
             {
-                _closingHours = value;
+                _description = value;
                 RegisterChange();
             }
         }
         public virtual ICollection<StaffTitle> StaffTitles { get; set; }
-        public Title(string name, string openingHours, string closingHours) : base(name)
+        public Title(string name, string position, string description) : base(name)
         {
-            _openingHours = openingHours;
-            _closingHours = closingHours;
+            _position = position;
+            _description = description;
         }
 
-        public Title(Guid id, DateTime createdAt, DateTime updatedAd, bool isDeleted, string name, string openingHours, string closingHours) : base(id, createdAt, updatedAd, isDeleted, name)
+        public Title(Guid id, DateTime createdAt, DateTime updatedAd, bool isDeleted, string name, string position, string description) : base(id, createdAt, updatedAd, isDeleted, name)
         {
-            _openingHours = openingHours;
-            _closingHours = closingHours;
+            _position = position;
+            _description = description;
         }
     }
 }
