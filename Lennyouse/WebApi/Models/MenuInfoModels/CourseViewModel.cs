@@ -11,10 +11,13 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models.MenuInfoModels
         public Guid Id { get; set; }
         public string Name { get; set; }
 
+
+
         public Course ToCourse()
         {
             return new Course(Id, DateTime.UtcNow, DateTime.UtcNow, false, Name);
         }
+
         public static CourseViewModel Parse(Course course)
         {
             return new CourseViewModel()
