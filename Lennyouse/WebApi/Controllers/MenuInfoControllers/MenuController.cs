@@ -18,8 +18,8 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.MenuInfoCont
         {
             var m = vm.ToMenu();
             var res = _bo.Create(m);
-            var code = res.Success ? HttpStatusCode.OK : HttpStatusCode.InternalServerError;
-            return new ObjectResult(code);
+            if (res.Success) return Ok();
+            return StatusCode((int)HttpStatusCode.InternalServerError);
         }
 
         [HttpGet("{id}")]
@@ -32,7 +32,7 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.MenuInfoCont
                 var mvm = MenuViewModel.Parse(res.Result);
                 return mvm;
             }
-            else return new ObjectResult(HttpStatusCode.InternalServerError);
+            else return StatusCode((int)HttpStatusCode.InternalServerError);
         }
 
         [HttpGet]
@@ -46,22 +46,22 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.MenuInfoCont
                     list.Add(MenuViewModel.Parse(item));
                 return list;
             }
-            else return new ObjectResult(HttpStatusCode.InternalServerError);
+            else return StatusCode((int)HttpStatusCode.InternalServerError);
         }
 
         [HttpPut]
         public ActionResult Update([FromBody] MenuViewModel vm)
         {
             var res = _bo.Read(vm.Id);
-            if (!res.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!res.Success) return StatusCode((int)HttpStatusCode.InternalServerError);
             var current = res.Result;
             if (current == null) return NotFound();
-            if (vm.Equals(current)) return new ObjectResult(HttpStatusCode.NotModified);
+            if (vm.Equals(current)) return StatusCode((int)HttpStatusCode.NotModified);
             if (current.Date != vm.Date) current.Date = vm.Date;
             if (current.MealId != vm.MealId) current.MealId = vm.MealId;
             if (current.RestaurantId != vm.RestaurantId) current.RestaurantId = vm.RestaurantId;
             var updateResult = _bo.Update(current);
-            if (!updateResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!updateResult.Success) return StatusCode((int)HttpStatusCode.InternalServerError);
             return Ok();
         }
 
@@ -70,7 +70,7 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.MenuInfoCont
         {
             var res = _bo.Delete(id);
             if (res.Success) return Ok();
-            else return new ObjectResult(HttpStatusCode.InternalServerError);
+            else return StatusCode((int)HttpStatusCode.InternalServerError);
         }
     }
 }

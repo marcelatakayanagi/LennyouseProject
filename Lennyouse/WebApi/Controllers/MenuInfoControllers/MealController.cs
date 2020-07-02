@@ -25,7 +25,7 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.MenuInfoCont
         {
             var m = new Meal(vm.Name, vm.Starting, vm.Ending);
             var res = _bo.Create(m);
-            var code = res.Success ? HttpStatusCode.OK : HttpStatusCode.InternalServerError;
+            var code = res.Success ? Ok() : StatusCode((int)HttpStatusCode.InternalServerError);
             return new ObjectResult(code);
         }
 
@@ -37,12 +37,13 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.MenuInfoCont
             {
                 var mvm = new MealViewModel();
                 if (res.Result == null) return NotFound();
+                mvm.Id = res.Result.Id;
                 mvm.Name = res.Result.Name;
                 mvm.Starting = res.Result.StartingHours;
                 mvm.Ending = res.Result.EndingHours;
                 return mvm;
             }
-            else return new ObjectResult(HttpStatusCode.InternalServerError);
+            else return StatusCode((int)HttpStatusCode.InternalServerError);
         }
 
         [HttpGet]
@@ -56,7 +57,7 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.MenuInfoCont
                     list.Add(MealViewModel.Parse(item));
                 return list;
             }
-            else return new ObjectResult(HttpStatusCode.InternalServerError);
+            else return StatusCode((int)HttpStatusCode.InternalServerError);
         }
 
         [HttpPut]
@@ -66,12 +67,12 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.MenuInfoCont
             if (!res.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
             var current = res.Result;
             if (current == null) return NotFound();
-            if (current.Name == vm.Name && current.StartingHours == vm.Starting && current.EndingHours == vm.Ending) return new ObjectResult(HttpStatusCode.NotModified);
+            if (current.Name == vm.Name && current.StartingHours == vm.Starting && current.EndingHours == vm.Ending) return StatusCode((int)HttpStatusCode.NotModified);
             if (current.Name != vm.Name) current.Name = vm.Name;
             if (current.StartingHours != vm.Starting) current.StartingHours = vm.Starting;
             if (current.EndingHours != vm.Ending) current.EndingHours = vm.Ending;
             var updateResult = _bo.Update(current);
-            if (!updateResult.Success) return new ObjectResult(HttpStatusCode.InternalServerError);
+            if (!updateResult.Success) return StatusCode((int)HttpStatusCode.InternalServerError);
             return Ok();
         }
 
@@ -80,7 +81,7 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.MenuInfoCont
         {
             var res = _bo.Delete(id);
             if (res.Success) return Ok();
-            else return new ObjectResult(HttpStatusCode.InternalServerError);
+            else return StatusCode((int)HttpStatusCode.InternalServerError);
         }
     }
 }
