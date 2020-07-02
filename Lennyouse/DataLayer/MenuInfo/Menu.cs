@@ -29,7 +29,7 @@ namespace Recodme.RD.Lennyouse.DataLayer.MenuInfo
 
 
         [ForeignKey("Restaurant")]
-        public Guid ReastaurantId { get; set; }
+        public Guid RestaurantId { get; set; }
         public virtual Restaurant Restaurant { get; set; }
 
         public virtual ICollection<Serving> Servings { get; set; }
@@ -38,14 +38,14 @@ namespace Recodme.RD.Lennyouse.DataLayer.MenuInfo
         {
             _date = date;
             MealId = mealId;
-            ReastaurantId = reastaurantId;
+            RestaurantId = reastaurantId;
         }
 
-        public Menu(Guid id, DateTime createdAt, DateTime updatedAd, bool isDeleted, DateTime date, Guid mealId, Guid reastaurantId) : base(id, createdAt, updatedAd, isDeleted)
+        public Menu(Guid id, DateTime createdAt, DateTime updatedAd, bool isDeleted, DateTime date, Guid mealId, Guid restaurantId) : base(id, createdAt, updatedAd, isDeleted)
         {
             _date = date;
             MealId = mealId;
-            ReastaurantId = reastaurantId;
+            RestaurantId = restaurantId;
         }
     }
 }

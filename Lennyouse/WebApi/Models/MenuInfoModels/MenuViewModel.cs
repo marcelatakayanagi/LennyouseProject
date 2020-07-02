@@ -8,12 +8,12 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models.MenuInfoModels
         public Guid Id { get; set; }
         public DateTime Date { get; set; }
         public Guid MealId { get; set; }
-        public Guid ReastaurantId { get; set; }
+        public Guid RestaurantId { get; set; }
 
 
-        public Menu ToObjt()
+        public Menu ToMenu()
         {
-            return new Menu(Id, DateTime.UtcNow, DateTime.UtcNow, false, Date,MealId,ReastaurantId);
+            return new Menu(Id, DateTime.UtcNow, DateTime.UtcNow, false, Date,MealId,RestaurantId);
         }
 
         public static MenuViewModel Parse(Menu obj)
@@ -23,7 +23,7 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models.MenuInfoModels
                 Id = obj.Id,
                 Date = obj.Date,
                 MealId = obj.MealId,
-                ReastaurantId = obj.ReastaurantId
+                RestaurantId = obj.RestaurantId
             };
         }
 
@@ -33,7 +33,7 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models.MenuInfoModels
                 (Id == obj.Id &&
                 Date == obj.Date &&
                 MealId == obj.MealId &&
-                ReastaurantId == obj.MealId);
+                RestaurantId == obj.MealId);
             return res;
         }
     }
