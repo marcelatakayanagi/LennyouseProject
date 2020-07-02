@@ -57,6 +57,7 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.MenuInfoCont
             var current = res.Result;
             if (current == null) return NotFound();
             if (vm.Equals(current)) return new ObjectResult(HttpStatusCode.NotModified);
+            if (current.Date != vm.Date) current.Date = vm.Date;
             if (current.MealId != vm.MealId) current.MealId = vm.MealId;
             if (current.RestaurantId != vm.RestaurantId) current.RestaurantId = vm.RestaurantId;
             var updateResult = _bo.Update(current);
