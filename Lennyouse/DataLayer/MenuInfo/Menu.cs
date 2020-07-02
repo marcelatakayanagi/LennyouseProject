@@ -34,11 +34,11 @@ namespace Recodme.RD.Lennyouse.DataLayer.MenuInfo
 
         public virtual ICollection<Serving> Servings { get; set; }
 
-        public Menu(DateTime date, Guid mealId, Guid reastaurantId) : base()
+        public Menu(DateTime date, Guid mealId, Guid restaurantId) : base()
         {
             _date = date;
             MealId = mealId;
-            RestaurantId = reastaurantId;
+            RestaurantId = restaurantId;
         }
 
         public Menu(Guid id, DateTime createdAt, DateTime updatedAd, bool isDeleted, DateTime date, Guid mealId, Guid restaurantId) : base(id, createdAt, updatedAd, isDeleted)

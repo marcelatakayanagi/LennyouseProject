@@ -9,7 +9,6 @@ namespace Recodme.RD.Lennyouse.DataLayer.UserInfo
 {
     public class Person : Entity
     {
-        [ForeignKey("LennyouseUser")]
         private long _vatNumber;
         private string _firstName;
         private string _lastName;
