@@ -10,12 +10,12 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models.RestaurantInfoMod
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public string OpeningHours { get; set; }
-        public string ClosingHours { get; set; }
+        public string Position { get; set; }
+        public string Description { get; set; }
 
         public Title ToTitle()
         {
-            return new Title(Id, DateTime.UtcNow, DateTime.UtcNow, false, Name, OpeningHours, ClosingHours);
+            return new Title(Id, DateTime.UtcNow, DateTime.UtcNow, false, Name, Position, Description);
         }
         public static TitleViewModel Parse(Title title)
         {
@@ -23,8 +23,8 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models.RestaurantInfoMod
             {
                 Id = title.Id,
                 Name = title.Name,
-                OpeningHours = title.OpeningHours,
-                ClosingHours = title.ClosingHours
+                Position = title.Position,
+                Description = title.Description
             };
         }
     }

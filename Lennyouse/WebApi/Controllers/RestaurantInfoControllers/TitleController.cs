@@ -57,11 +57,11 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.RestaurantIn
             var current = currentResult.Result;
             if (current == null) return NotFound();
 
-            if (current.Name == tvm.Name && current.OpeningHours == tvm.OpeningHours && 
-                current.ClosingHours  == tvm.ClosingHours) return StatusCode((int)HttpStatusCode.NotModified);
+            if (current.Name == tvm.Name && current.Position == tvm.Position && 
+                current.Description  == tvm.Description) return StatusCode((int)HttpStatusCode.NotModified);
             if (current.Name != tvm.Name) current.Name = tvm.Name;
-            if (current.OpeningHours != tvm.OpeningHours) current.OpeningHours = tvm.OpeningHours;
-            if (current.ClosingHours != tvm.ClosingHours) current.ClosingHours = tvm.ClosingHours;
+            if (current.Position != tvm.Position) current.Position = tvm.Position;
+            if (current.Description != tvm.Description) current.Description = tvm.Description;
             var updateResult = _bo.Update(current);
             if (!updateResult.Success) return StatusCode((int)HttpStatusCode.InternalServerError);
             return Ok();
