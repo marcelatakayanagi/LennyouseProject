@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.UserInfoBO;
+using Recodme.RD.Lennyouse.DataLayer.UserInfo;
 using Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models.UserInfoModels;
 
 namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.UserInfoControllers
@@ -18,7 +19,7 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.UserInfoCont
         {
             var p = vm.ToPerson();
             var res = _bo.Create(p);
-            return StatusCode(res.Success ? (int)HttpStatusCode.OK : (int)HttpStatusCode.InternalServerError);        
+            return StatusCode(res.Success ? (int)HttpStatusCode.OK : (int)HttpStatusCode.InternalServerError);
         }
 
         [HttpGet("{id}")]

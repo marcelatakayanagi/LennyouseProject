@@ -46,7 +46,7 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.Contexts
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Serving> Servings { get; set; }
-        //public DbSet<LennyouseUser> LennyouseUsers { get; set; }
+        public DbSet<LennyouseUser> LennyouseUser { get; set; }
 
     }
 }

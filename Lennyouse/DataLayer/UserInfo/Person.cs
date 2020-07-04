@@ -73,6 +73,7 @@ namespace Recodme.RD.Lennyouse.DataLayer.UserInfo
 
         [ForeignKey("LennyouseUser")]
         public Guid LennyouseUserId { get; set; }
+
         public virtual LennyouseUser LennyouseUser { get; set; }
 
         public virtual ICollection<StaffRecord> StaffRecords { get; set; }

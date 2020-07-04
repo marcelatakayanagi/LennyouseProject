@@ -27,8 +27,8 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models.UserInfoModels
                 FirstName = person.FirstName,
                 LastName = person.LastName,
                 PhoneNumber = person.PhoneNumber,
-                VatNumber = person.VatNumber
-
+                VatNumber = person.VatNumber,
+                LennyouseUserId = person.LennyouseUserId
             };
         }
     }

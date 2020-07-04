@@ -30,6 +30,10 @@ namespace Recodme.RD.Lennyouse.DataAccessLayer.DataAccessObjects.UserInfoDAO
         #region Create
         public void Create(Person person)
         {
+            var lennyouseUser = new LennyouseUser();
+            _context.LennyouseUser.Add(lennyouseUser);
+            person.LennyouseUser = lennyouseUser;
+            person.LennyouseUserId = lennyouseUser.Id;
             _context.Persons.Add(person);
             _context.SaveChanges();
         }
