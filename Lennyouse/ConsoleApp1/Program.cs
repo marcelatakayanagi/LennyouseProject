@@ -23,12 +23,12 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.App
             //var ovolacteo = new DietaryRestriction("Ovo-lacteo");
             //bo.Create(ovolacteo);
 
-            var dao = new BaseDataAccessObject<Restaurant>();
-            var dr = new Restaurant("L'Ennyouse", "Rua das Ermelindas", "12h", "23h", "Monday", 20);
-            dao.Create(dr);
-            var dao1 = new BaseDataAccessObject<Restaurant>();
-            var dr1 = new Restaurant("McDonnalds", "Rua Rua", "12h", "23h", "Tuesday", 15);
-            dao1.Create(dr1);
+            //var dao = new BaseDataAccessObject<Restaurant>();
+            //var dr = new Restaurant("L'Ennyouse", "Rua das Ermelindas", "12h", "23h", "Monday", 20);
+            //dao.Create(dr);
+            //var dao1 = new BaseDataAccessObject<Restaurant>();
+            //var dr1 = new Restaurant("McDonnalds", "Rua Rua", "12h", "23h", "Tuesday", 15);
+            //dao1.Create(dr1);
 
 
         }
