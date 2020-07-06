@@ -22,8 +22,6 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers
 
         public IActionResult Index()
         {
-            var bo = new DietaryRestrictionBusinessObject();
-            var lst = new List<DietaryRestrictionViewModel>();
             return View();
         }
 
