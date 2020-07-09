@@ -24,7 +24,7 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.MenuInfoCont
         {
             var dr = vm.ToDietaryRestriction();
             var res = _bo.Create(dr);
-            var statusCodeNum = res.Success ? (int)HttpStatusCode.OK : (int)HttpStatusCode.InternalServerError);
+            var statusCodeNum = res.Success ? (int)HttpStatusCode.OK : (int)HttpStatusCode.InternalServerError;
             var statusCode = StatusCode(statusCodeNum);
             return statusCode;
 
@@ -43,14 +43,14 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.MenuInfoCont
             if (res.Success)
             {
                 if (res.Result == null) return NotFound();
-                if(res.Result.UpdatedAt != DateTime.Now) return StatusCode((int)HttpStatusCode.InternalServerError);
+                //if(res.Result.UpdatedAt != DateTime.Now) return StatusCode((int)HttpStatusCode.InternalServerError);
                 var drvm = DietaryRestrictionViewModel.Parse(res.Result);
                 return drvm;
             }
             else return StatusCode((int)HttpStatusCode.InternalServerError);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         public ActionResult<List<DietaryRestrictionViewModel>> List()
         {
