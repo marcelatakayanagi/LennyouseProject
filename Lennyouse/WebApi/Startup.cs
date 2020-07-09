@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.Exchange.WebServices.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -29,7 +30,17 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddCors();
+            services.AddCors(
+                (ServiceObject) =>
+                {
+                    ServiceObject.AddPolicy("GeneralPolicy", (builder) =>
+                    {
+                        builder.AllowAnyOrigin();
+                        builder.AllowAnyHeader();
+                        builder.AllowAnyMethod();
+
+                    });
+                });
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer((options) => 
                         {
                             options.RequireHttpsMetadata = false;
@@ -72,8 +83,10 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
+
+            app.UseCors("GeneralPolicy");
+
             app.UseAuthentication();
             app.UseAuthorization();
 
