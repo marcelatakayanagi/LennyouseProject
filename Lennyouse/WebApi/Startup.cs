@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Exchange.WebServices.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,6 +31,7 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
             services.AddCors(
                 (ServiceObject) =>
                 {
@@ -41,6 +43,7 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi
 
                     });
                 });
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer((options) => 
                         {
                             options.RequireHttpsMetadata = false;
@@ -56,9 +59,22 @@ namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi
                                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
                             };
                         });
+
             services.AddSwaggerGen(
                 (x) => { x.SwaggerDoc("v1", new OpenApiInfo() { Title = "Lennyouse", Version = "v1" }); //função anonima usar parenteses qdo tiver dois argumentos de entrada
                 });
+
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+            services.Configure<RazorViewEngineOptions>(o =>
+            {
+                o.ViewLocationFormats.Clear();
+                o.ViewLocationFormats.Add("/Views/{1}/{0}" + RazorViewEngine.ViewExtension);
+                o.ViewLocationFormats.Add("/Views/Shared/{0}" + RazorViewEngine.ViewExtension);
+                o.ViewLocationFormats.Add("/Views/MenuInfoViews/{1}/{0}" + RazorViewEngine.ViewExtension);
+                o.ViewLocationFormats.Add("/Views/RestaurantInfoViews/{1}/{0}" + RazorViewEngine.ViewExtension);
+                o.ViewLocationFormats.Add("/Views/UserInfoViews/{1}/{0}" + RazorViewEngine.ViewExtension);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
