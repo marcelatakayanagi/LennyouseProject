@@ -8,60 +8,60 @@ using Microsoft.AspNetCore.Mvc;
 using Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.UserInfoBO;
 using Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models.UserInfoModels;
 
-namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.UserInfoControllers
+namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.RestaurantControllers.Api.UserInfoControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClientRecordController : ControllerBase
+    public class StaffRecordController : ControllerBase
     {
-        private ClientRecordBusinessObject _bo = new ClientRecordBusinessObject();
+        private StaffRecordBusinessObject _bo = new StaffRecordBusinessObject();
 
         [HttpPost]
-        public ActionResult Create([FromBody] ClientRecordViewModel vm)
+        public ActionResult Create([FromBody] StaffRecordViewModel vm)
         {
-            var p = vm.ToClientRecord();
+            var p = vm.ToStaffRecord();
             var res = _bo.Create(p);
             return StatusCode(res.Success ? (int)HttpStatusCode.OK : (int)HttpStatusCode.InternalServerError);
         }
 
         [HttpGet("{id}")]
-        public ActionResult<ClientRecordViewModel> Get(Guid id)
+        public ActionResult<StaffRecordViewModel> Get(Guid id)
         {
             var res = _bo.Read(id);
             if (res.Success)
             {
                 if (res.Result == null) return NotFound();
-                var crvm = ClientRecordViewModel.Parse(res.Result);
-                return crvm;
+                var srvm = StaffRecordViewModel.Parse(res.Result);
+                return srvm;
             }
             else return StatusCode((int)HttpStatusCode.InternalServerError);
         }
-
         [HttpGet]
-        public ActionResult<List<ClientRecordViewModel>> List()
+        public ActionResult<List<StaffRecordViewModel>> List()
         {
             var res = _bo.List();
             if (!res.Success) return StatusCode((int)HttpStatusCode.InternalServerError);
-            var list = new List<ClientRecordViewModel>();
+            var list = new List<StaffRecordViewModel>();
             foreach (var item in res.Result)
             {
-                list.Add(ClientRecordViewModel.Parse(item));
+                list.Add(StaffRecordViewModel.Parse(item));
             }
             return list;
         }
 
         [HttpPut]
-        public ActionResult Update([FromBody] ClientRecordViewModel cr)
+        public ActionResult Update([FromBody] StaffRecordViewModel sr)
         {
-            var currentResult = _bo.Read(cr.Id);
+            var currentResult = _bo.Read(sr.Id);
             if (!currentResult.Success) return StatusCode((int)HttpStatusCode.InternalServerError);
 
             var current = currentResult.Result;
             if (current == null) return NotFound();
 
-            if (current.RegisterDate ==  cr.RegisterDate) return StatusCode((int)HttpStatusCode.InternalServerError);
+            if (current.BeginDate == sr.BeginDate && current.EndDate == sr.EndDate) return StatusCode((int)HttpStatusCode.InternalServerError);
 
-            if (current.RegisterDate != cr.RegisterDate) current.RegisterDate = cr.RegisterDate;
+            if (current.BeginDate != sr.BeginDate) current.BeginDate = sr.BeginDate;
+            if (current.EndDate != sr.EndDate) current.EndDate = sr.EndDate;
 
             var updateResult = _bo.Update(current);
             if (!updateResult.Success) return StatusCode((int)HttpStatusCode.InternalServerError);

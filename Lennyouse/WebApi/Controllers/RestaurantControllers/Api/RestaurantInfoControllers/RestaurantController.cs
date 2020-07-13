@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Recodme.RD.Lennyouse.BusinessLayer.BusinessObjects.RestaurantInfoBO;
 using Recodme.RD.Lennyouse.PresentationLayer.WebApi.Models.RestaurantInfoModels;
 
-namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.RestaurantInfoControllers
+namespace Recodme.RD.Lennyouse.PresentationLayer.WebApi.Controllers.RestaurantControllers.Api.RestaurantInfoControllers
 {
     [Route("api/[controller]")]
     [ApiController]
